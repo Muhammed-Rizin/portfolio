@@ -124,10 +124,10 @@ const GITHUB_REPOS = [
     link: "https://github.com/Muhammed-Rizin/image-generator",
   },
   {
-    name: "portfolio",
+    name: "portfolio_3d",
     desc: "Animated 3D developer portfolio built with React, Three.js, and GSAP.",
     lang: "JavaScript",
-    link: "https://github.com/Muhammed-Rizin/Portfolio",
+    link: "https://github.com/Muhammed-Rizin/Portfolio-3d",
   },
   {
     name: "land-value-predictor",
@@ -444,13 +444,18 @@ function BootScreen({ onComplete }) {
   const [lines, setLines] = useState([]);
   useEffect(() => {
     const sequence = [
-      "NOTHING(R) BOOTLOADER v3.0",
-      "VERIFYING_IDENTITY... [FULL_STACK_ENGINEER]",
-      "LOADING_FIRMWARE... [REACT, TS, NODE, AWS]",
-      "CHECKING_PERIPHERALS... OK",
-      "ESTABLISHING_UPLINK... OK",
-      "SYSTEM_READY.",
+      "NEXUS-OS BOOTLOADER v3.7",
+      "INITIALIZING_CORE_MODULES...",
+      "IDENTITY_CHECK... [MUHAMMED_RIZIN]",
+      "ROLE_VERIFIED... [FULL_STACK_ENGINEER]",
+      "LOADING_RUNTIME... [REACT • NODE • TYPESCRIPT • AWS]",
+      "STARTING_SERVICES... AUTH | API | CACHE | DB_CLUSTER",
+      "NETWORK_HANDSHAKE... STABLE (24ms)",
+      "SECURITY_PROTOCOLS... PASSED",
+      "SYSTEM_OPTIMIZATION... COMPLETE",
+      "ENVIRONMENT_READY.",
     ];
+
     let delay = 100;
     sequence.forEach((line, index) => {
       setTimeout(() => {
@@ -466,7 +471,6 @@ function BootScreen({ onComplete }) {
       {lines.map((l, i) => (
         <div key={i}>&gt; {l}</div>
       ))}{" "}
-      {/* Fixed: escaped > to &gt; */}
       <div className="w-2 h-4 bg-red-600 animate-pulse mt-2" />
     </div>
   );
@@ -666,11 +670,11 @@ function ClusterStatus({ redMode }) {
 }
 
 function DeployStream({ redMode }) {
-const commits = [
-  { hash: "c41e7a", msg: "fix: auth token sync", branch: "main" },
-  { hash: "9db3f2", msg: "feat: enable redis cluster", branch: "dev" },
-  { hash: "ae12c9", msg: "chore: refine docker build", branch: "dev" },
-];
+  const commits = [
+    { hash: "c41e7a", msg: "fix: auth token sync", branch: "main" },
+    { hash: "9db3f2", msg: "feat: enable redis cluster", branch: "dev" },
+    { hash: "ae12c9", msg: "chore: refine docker build", branch: "dev" },
+  ];
 
   return (
     <Card className="h-full p-4 flex flex-col" redMode={redMode}>
