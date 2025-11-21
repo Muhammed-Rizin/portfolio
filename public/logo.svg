@@ -1,0 +1,17 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Matte Black Background with Rounded Corners -->
+  <rect width="64" height="64" rx="16" fill="#050505"/>
+  
+  <!-- Industrial Outer Ring (Dashed) -->
+  <circle cx="32" cy="32" r="22" stroke="#333333" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- Corner Brackets (Top-Left / Bottom-Right) -->
+  <path d="M16 24V16H24" stroke="white" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M48 40V48H40" stroke="white" stroke-width="2" stroke-opacity="0.5"/>
+
+  <!-- The "System Active" Red Dot -->
+  <circle cx="32" cy="32" r="10" fill="#DC2626"/>
+  
+  <!-- Optional: Subtle Glitch/Shine -->
+  <circle cx="34" cy="30" r="2" fill="white" fill-opacity="0.2"/>
+</svg>
