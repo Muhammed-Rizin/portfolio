@@ -1,5 +1,5 @@
 import { useView } from "../../context/ViewContext";
-import { SECTIONS } from "../../data/Sections";
+import { SECTIONS } from "../../data/sections";
 
 const BottomNav = () => {
   const { view, setView } = useView();
