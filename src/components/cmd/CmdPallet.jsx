@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useView } from "../../context/ViewContext";
-import { SECTIONS } from "../../data/Sections";
+import { SECTIONS } from "../../data/sections";
 import { Terminal, X } from "lucide-react";
 
 const CmdPalette = () => {
