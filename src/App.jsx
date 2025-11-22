@@ -13,7 +13,7 @@ import BottomNav from "./components/navigation/BottomNav";
 
 import Logs from "./components/sections/Logs";
 import Firmware from "./components/sections/Firmware";
-import Dashboard from "./components/sections/dashboard";
+import Dashboard from "./components/sections/Dashboard";
 import Shipments from "./components/sections/Shipments";
 import Repositories from "./components/sections/Repositories";
 
