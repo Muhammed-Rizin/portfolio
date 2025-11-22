@@ -1,0 +1,65 @@
+export const PROJECTS = [
+  {
+    id: "01",
+    name: "KSEB_PM_E_DRIVE",
+    type: "GOV_TECH",
+    desc: "EV adoption & subsidy management system for Kerala.",
+    stack: ["React", "Node", "Express", "MongoDB"],
+    detail:
+      "Built subsidy workflow modules & EV charging locator for Kerala’s nodal agency under PM E-DRIVE.",
+    live: "https://pmedrivekerala.kseb.in/",
+  },
+  {
+    id: "02",
+    name: "ASAP_KERALA_CAREERLINK",
+    type: "PLATFORM",
+    desc: "Government-backed job & internship portal for Kerala.",
+    stack: ["React", "Node", "Express", "MongoDB", "AWS", "Razorpay"],
+    detail:
+      "Served 14k+ candidates & 125+ colleges. Built CRM, screening tests, and scalable backend workflows.",
+    live: "https://careerlink.asapkerala.gov.in",
+  },
+  {
+    id: "03",
+    name: "ASAP_KERALA_CSP",
+    type: "PLATFORM",
+    desc: "Kerala government learning & training platform.",
+    stack: ["React", "Node", "Express", "MongoDB", "AWS", "Razorpay", "Firebase"],
+    detail:
+      "Handled 23k+ yearly leads. Built secure Finance Module & integrated payment workflows worth ₹53M+.",
+    live: "https://csp.asapkerala.gov.in",
+  },
+  {
+    id: "04",
+    name: "MEDCITY_INTERNATIONAL_ACADEMY",
+    type: "ENTERPRISE",
+    desc: "End-to-end CRM for Academy, Study Abroad & Placements.",
+    stack: ["React", "Node", "Express", "MongoDB", "Razorpay", "Meta Graph API", "UrbanChat"],
+    detail: "Automated admissions, visas, placements; handled 25k+ leads & ₹30M+ in payments.",
+  },
+  {
+    id: "05",
+    name: "SMOTPRO",
+    type: "PLATFORM",
+    desc: "Sales, operations & documentation suite for multiple divisions.",
+    stack: [
+      "React",
+      "Node",
+      "Express",
+      "MongoDB",
+      "PayU",
+      "JustDial API",
+      "IVR",
+      "TripCrafters API",
+    ],
+    detail: "Integrated PayU, IVR, JD, TripCrafters; boosted lead acquisition to 500+/week.",
+  },
+  {
+    id: "06",
+    name: "SRV_INFOTECH",
+    type: "ENTERPRISE",
+    desc: "Staff, task & project tracking for 500+ clients.",
+    stack: ["React", "Node", "Express", "MongoDB"],
+    detail: "Built HRMS + task management handling 650+ simultaneous projects.",
+  },
+];
