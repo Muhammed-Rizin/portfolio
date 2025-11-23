@@ -8,7 +8,7 @@ Features animated system widgets, real-time GitHub metrics, a full boot sequence
 
 ---
 
-### **🖥️ Nothing-OS Inspired UI**
+### **Nothing-OS Inspired UI**
 
 * CRT scanlines
 * Dotted-grid background
@@ -17,7 +17,7 @@ Features animated system widgets, real-time GitHub metrics, a full boot sequence
 * Minimal black/red aesthetic
 * Zero-chrome cards
 
-### **⚡ Real-Time Widgets**
+### **Real-Time Widgets**
 
 * Developer Monitor (commits, PRs, hours)
 * Tech Radar with animated skill bars
@@ -26,7 +26,7 @@ Features animated system widgets, real-time GitHub metrics, a full boot sequence
 * LeetCode Stats
 * Starred repos & GitHub activity
 
-### **🧠 Hidden Engineer Mode (Konami Code)**
+### **Hidden Engineer Mode (Konami Code)**
 
 ```
 ↑ ↑ ↓ ↓ ← → ← → B A
@@ -38,7 +38,7 @@ Enables:
 * Pulsing LEDs
 * Enhanced animation states
 
-### **⌨️ Command Palette (CMD/CTRL + K)**
+### **Command Palette (CMD/CTRL + K)**
 
 Quick navigation:
 
@@ -46,13 +46,13 @@ Quick navigation:
 * Toggle modes
 * Trigger system actions
 
-### **📄 Resume Trigger**
+### **Resume Trigger**
 
 Simulated “GET_RESUME” action with command-style feedback.
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 * React 18
 * Vite
@@ -63,7 +63,7 @@ Simulated “GET_RESUME” action with command-style feedback.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 
@@ -124,7 +124,7 @@ src/
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 Create `.env`:
 
@@ -134,7 +134,7 @@ VITE_GITHUB_USERNAME=Muhammed-Rizin
 VITE_WORK_USERNAME=rizin-srv
 ```
 
-### `.env.example`
+### .env.example`
 
 ```
 VITE_GITHUB_USERNAME=
@@ -144,7 +144,7 @@ VITE_WORK_USERNAME=
 
 ---
 
-## 🎮 Hotkeys
+## Hotkeys
 
 | Action          | Shortcut     |
 | --------------- | ------------ |
@@ -153,7 +153,7 @@ VITE_WORK_USERNAME=
 
 ---
 
-## 🧩 Design Principles
+## Design Principles
 
 * Minimal UI, maximum functionality
 * No external animation libraries
@@ -163,7 +163,7 @@ VITE_WORK_USERNAME=
 
 ---
 
-## 🧨 Konami Code
+## Konami Code
 
 ```jsx
 const konami = [
@@ -180,7 +180,7 @@ setRedMode((prev) => !prev);
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ```sh
 git clone https://github.com/Muhammed-Rizin/portfolio
@@ -191,7 +191,7 @@ npm run dev
 
 ---
 
-## 🎯 Ideal Use Cases
+## Ideal Use Cases
 
 * Developer portfolio
 * Personal dashboard
@@ -201,7 +201,7 @@ npm run dev
 
 ---
 
-## 🌟 Author
+## Author
 
 **Muhammed Rizin**
 Full-Stack Engineer — React, Angular, Node, Express, AWS, High-Performance Web Systems.
