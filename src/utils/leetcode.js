@@ -15,6 +15,7 @@ export async function getLeetCodeStats() {
           easy: json.easySolved || 0,
           medium: json.mediumSolved || 0,
           hard: json.hardSolved || 0,
+          rank: json.ranking || 0,
         };
       }
 
