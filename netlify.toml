@@ -6,7 +6,7 @@
   enabled = false
 
 [[redirects]]
-  from = "http://yourdomain.com/*"
-  to = "https://yourdomain.com/:splat"
+  from = "http://muhammedrizin.in/*"
+  to = "https://muhammedrizin.in/:splat"
   status = 301
   force = true
