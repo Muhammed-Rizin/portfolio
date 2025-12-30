@@ -19,10 +19,10 @@ export async function getLeetCodeStats() {
         };
       }
 
-      return null;
+      return {};
     } catch (err) {
       console.error("LeetCode API error:", err);
-      return null;
+      return {};
     }
   });
 }
