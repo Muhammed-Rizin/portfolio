@@ -26,7 +26,6 @@ function Shipments() {
               redMode={redMode}
             >
               <div className="flex flex-col md:flex-row justify-between gap-4">
-                {/* LEFT */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2">
                     <span className={`font-mono text-xs text-red-600 shrink-0`}>ID_{p.id}</span>
@@ -35,11 +34,9 @@ function Shipments() {
                     </h3>
                   </div>
                   <p className="text-sm font-mono text-neutral-400 max-w-xl wrap-break-word whitespace-normal">
-                    {p.desc}
+                    {p.summary}
                   </p>
                 </div>
-
-                {/* ARROW */}
                 <div
                   className={`self-start p-2 border transition-colors shrink-0 ${
                     redMode

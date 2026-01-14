@@ -2,49 +2,95 @@ export const PROJECTS = [
   {
     id: "01",
     name: "KSEB_PM_E_DRIVE",
-    type: "GOV_TECH",
-    desc: "EV adoption & subsidy management system for Kerala.",
-    stack: ["React", "Node", "Express", "MongoDB"],
-    detail:
-      "Built subsidy workflow modules & EV charging locator for Kerala’s nodal agency under PM E-DRIVE.",
+    category: "GOV_TECH",
+    summary: "Government EV subsidy and charging infrastructure platform for Kerala.",
+    role: "Full Stack Engineer (End-to-End Ownership)",
+    impact: [
+      "Production system used by a state-level government agency",
+      "Designed subsidy workflows and EV service discovery modules",
+    ],
+    contributions: [
+      "Architected Node.js APIs for subsidy validation and approvals",
+      "Built React dashboards for operational and administrative users",
+      "Implemented role-based access control and secure data flows",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
     live: "https://pmedrivekerala.kseb.in/",
   },
+
   {
     id: "02",
     name: "ASAP_KERALA_CAREERLINK",
-    type: "PLATFORM",
-    desc: "Government-backed job & internship portal for Kerala.",
-    stack: ["React", "Node", "Express", "MongoDB", "AWS", "Razorpay"],
-    detail:
-      "Served 14k+ candidates & 125+ colleges. Built CRM, screening tests, and scalable backend workflows.",
+    category: "PLATFORM",
+    summary:
+      "Government-backed job and internship platform connecting students, colleges, and employers.",
+    role: "Full Stack Engineer",
+    impact: [
+      "Served 14,000+ candidates across 125+ colleges",
+      "Handled high-volume application and screening workflows",
+    ],
+    contributions: [
+      "Built scalable backend workflows for candidate screening and assessments",
+      "Developed CRM modules for institutions and employers",
+      "Optimized API performance for concurrent user access",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB", "AWS", "Razorpay"],
     live: "https://careerlink.asapkerala.gov.in",
   },
+
   {
     id: "03",
     name: "ASAP_KERALA_CSP",
-    type: "PLATFORM",
-    desc: "Kerala government learning & training platform.",
-    stack: ["React", "Node", "Express", "MongoDB", "AWS", "Razorpay", "Firebase"],
-    detail:
-      "Handled 23k+ yearly leads. Built secure Finance Module & integrated payment workflows worth ₹53M+.",
+    category: "PLATFORM",
+    summary: "Learning, training, and certification platform for Kerala government programs.",
+    role: "Full Stack Engineer (Finance & Payments)",
+    impact: ["Managed 23,000+ yearly leads", "Processed ₹60M+ in secure online payments"],
+    contributions: [
+      "Designed and implemented secure finance and payment modules",
+      "Integrated Razorpay with audit-safe transaction handling",
+      "Built admin tooling for reporting and reconciliation",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB", "AWS", "Razorpay", "Firebase"],
     live: "https://csp.asapkerala.gov.in",
   },
+
   {
     id: "04",
     name: "MEDCITY_INTERNATIONAL_ACADEMY",
-    type: "ENTERPRISE",
-    desc: "End-to-end CRM for Academy, Study Abroad & Placements.",
-    stack: ["React", "Node", "Express", "MongoDB", "Razorpay", "Meta Graph API", "UrbanChat"],
-    detail: "Automated admissions, visas, placements; handled 25k+ leads & ₹30M+ in payments.",
+    category: "ENTERPRISE",
+    summary: "End-to-end CRM for admissions, study abroad, and placement operations.",
+    role: "Lead Full Stack Developer",
+    impact: [
+      "Handled 25,000+ leads across multiple business units",
+      "Processed ₹30M+ in online payments",
+    ],
+    contributions: [
+      "Automated admissions, visa, and placement workflows",
+      "Integrated Meta Graph API and UrbanChat for communication",
+      "Built payment pipelines with Razorpay and reporting dashboards",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB", "Razorpay", "Meta Graph API", "UrbanChat"],
   },
+
   {
     id: "05",
     name: "SMOTPRO",
-    type: "PLATFORM",
-    desc: "Sales, operations & documentation suite for multiple divisions.",
+    category: "PLATFORM",
+    summary: "Sales, operations, and documentation suite for multi-division businesses.",
+    role: "Full Stack Engineer",
+    impact: [
+      "Boosted lead acquisition to 500+ leads per week",
+      "Unified multiple external systems into a single platform",
+    ],
+    contributions: [
+      "Integrated Meta Leads & Marketing APIs with webhook-based ingestion for real-time CRM lead capture",
+      "Integrated PayU, IVR, JustDial, and TripCrafters APIs",
+      "Built automation pipelines for lead capture and assignment",
+      "Designed internal dashboards for sales and ops teams",
+    ],
     stack: [
       "React",
-      "Node",
+      "Node.js",
       "Express",
       "MongoDB",
       "PayU",
@@ -52,14 +98,20 @@ export const PROJECTS = [
       "IVR",
       "TripCrafters API",
     ],
-    detail: "Integrated PayU, IVR, JD, TripCrafters; boosted lead acquisition to 500+/week.",
   },
+
   {
     id: "06",
     name: "SRV_INFOTECH",
-    type: "ENTERPRISE",
-    desc: "Staff, task & project tracking for 500+ clients.",
-    stack: ["React", "Node", "Express", "MongoDB"],
-    detail: "Built HRMS + task management handling 650+ simultaneous projects.",
+    category: "ENTERPRISE",
+    summary: "HRMS, task, and project management system for service-based operations.",
+    role: "Full Stack Engineer",
+    impact: ["Managed 650+ concurrent projects", "Used by teams supporting 500+ clients"],
+    contributions: [
+      "Built HRMS modules for staff and workload management",
+      "Designed task tracking and reporting systems",
+      "Optimized backend workflows for concurrent usage",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
   },
 ];
