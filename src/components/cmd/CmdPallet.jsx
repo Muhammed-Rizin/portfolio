@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useView } from "../../context/ViewContext";
 import { SECTIONS } from "../../data/sections";
 import { Terminal, X } from "lucide-react";
 
 const CmdPalette = () => {
-  const { cmdOpen, setCmdOpen, redMode, setView } = useView();
+  const navigate = useNavigate();
+  const { cmdOpen, setCmdOpen, redMode } = useView();
 
   // Register global CMD+K listener HERE (safe, isolated)
   useEffect(() => {
@@ -20,6 +22,11 @@ const CmdPalette = () => {
   }, [setCmdOpen]);
 
   if (!cmdOpen) return null;
+
+  const handleNavigate = (id) => {
+    navigate(`/${id === "dashboard" ? "dashboard" : id}`);
+    setCmdOpen(false);
+  };
 
   return (
     <div
@@ -50,10 +57,7 @@ const CmdPalette = () => {
           {SECTIONS.map((cmd) => (
             <button
               key={cmd.id}
-              onClick={() => {
-                setView(cmd.id);
-                setCmdOpen(false);
-              }}
+              onClick={() => handleNavigate(cmd.id)}
               className="w-full flex items-center gap-3 p-3 hover:bg-neutral-900 text-neutral-400 hover:text-white transition-colors font-mono text-sm"
             >
               <cmd.icon size={16} /> {cmd.l}

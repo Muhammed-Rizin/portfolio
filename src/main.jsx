@@ -1,13 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import { ViewProvider } from "./context/ViewContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ViewProvider>
-      <App />
-    </ViewProvider>
-  </StrictMode>
+    <BrowserRouter>
+      <ViewProvider>
+        <App />
+      </ViewProvider>
+    </BrowserRouter>
+  </StrictMode>,
 );
