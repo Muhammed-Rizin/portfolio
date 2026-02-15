@@ -4,7 +4,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import useKonami from "./hooks/useKonami";
 import { useView } from "./context/ViewContext";
 
-import ScanLine from "./components/ui/Scanline";
 import DottedBg from "./components/ui/DottedBg";
 import CmdPalette from "./components/cmd/CmdPallet";
 import BootScreen from "./components/boot/Bootscreen";
@@ -35,7 +34,6 @@ export default function App() {
       }`}
     >
       <DottedBg />
-      <ScanLine />
       <BootScreen />
       <CmdPalette />
       <Header />

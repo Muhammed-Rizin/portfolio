@@ -1,6 +1,5 @@
 import { ExternalLink, Search } from "lucide-react";
 import { useView } from "../../context/ViewContext";
-import TimeWidget from "./TimeWidget";
 
 const Header = () => {
   const { setCmdOpen } = useView();
@@ -39,7 +38,6 @@ const Header = () => {
             <Search size={14} />
             CMD+K
           </button>
-          <TimeWidget />
         </div>
       </div>
     </header>

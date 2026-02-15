@@ -20,33 +20,33 @@ const BottomNav = () => {
 
   return (
     <>
-      <nav className="fixed md:hidden bottom-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-2xl">
-        <div className="brutal-card bg-[var(--neo-surface)] px-2 py-2 flex items-center justify-between">
-          {SECTIONS.map((item) => {
-            const active = currentView === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => navigate(routeFor(item.id))}
-                className={`w-full py-2 px-1 flex flex-col items-center gap-1 transition-colors cursor-pointer ${
-                  active ? "text-black" : "text-[var(--neo-muted)]"
-                }`}
-                aria-current={active ? "page" : undefined}
-                title={item.l}
-              >
-                <span
-                  className={`p-2 border-[3px] border-black transition-transform ${
+      <nav className="fixed md:hidden bottom-2 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-md px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)]">
+        <div className="brutal-card bg-[var(--neo-surface)] px-2 py-1.5">
+          <div className="flex items-center justify-between gap-1">
+            {SECTIONS.map((item) => {
+              const active = currentView === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => navigate(routeFor(item.id))}
+                  className={`group relative h-10 w-10 grid place-items-center transition-all cursor-pointer border-[3px] border-black ${
                     active
-                      ? "bg-[var(--neo-primary)] shadow-[3px_3px_0_#000]"
-                      : "bg-white hover:-translate-x-[1px] hover:-translate-y-[1px]"
+                      ? "bg-[var(--neo-primary)] text-black shadow-[3px_3px_0_#000]"
+                      : "bg-white text-[var(--neo-muted)]"
                   }`}
+                  aria-current={active ? "page" : undefined}
+                  aria-label={item.l}
+                  title={item.l}
                 >
-                  <item.icon size={15} />
-                </span>
-                <span className="neo-mono text-[9px] font-bold tracking-wide">{item.l}</span>
-              </button>
-            );
-          })}
+                  <item.icon size={16} />
+                  <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 brutal-chip bg-white text-black whitespace-nowrap opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100">
+                    {item.l}
+                  </span>
+                  {active && <span className="absolute -bottom-1 w-3 h-1 bg-black border border-black" />}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </nav>
 

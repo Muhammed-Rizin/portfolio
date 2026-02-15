@@ -7,16 +7,19 @@ import TechRadar from "../widgets/TechRadar";
 import LeetCodeWidget from "../widgets/LeetCodeWidget";
 import Matrix from "../widgets/Matrix";
 import StarredRepos from "../widgets/StarredRepos";
+import { GITHUB_USERNAME, WORK_USERNAME } from "../../utils/github";
 
 function Dashboard() {
   const [firstName, lastName] = IDENTITY.user.split(" ");
+  const profileUser = GITHUB_USERNAME || WORK_USERNAME || "muhammed-rizin";
+  const githubProfileUrl = `https://github.com/${profileUser}`;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-5 pb-44">
       <Card className="md:col-span-2 md:row-span-2 p-6 md:p-8 flex flex-col justify-between bg-[var(--neo-primary)] text-black">
         <div className="space-y-5">
           <div className="flex justify-between items-start gap-2">
-            <div className="brutal-chip bg-[var(--neo-lime)] text-black inline-flex items-center gap-2">
+            <div className="brutal-chip bg-(--neo-lime) text-black inline-flex items-center gap-2">
               <span className="w-2 h-2 bg-black animate-pulse" />
               ONLINE
             </div>
@@ -24,7 +27,7 @@ function Dashboard() {
             <button
               type="button"
               onClick={() => window.open(IDENTITY.resume, "_blank", "noopener,noreferrer")}
-              className="brutal-btn bg-white text-black px-3 py-2 text-[10px] inline-flex items-center gap-2"
+              className="brutal-btn bg-white text-black px-3 py-2 text-[10px] inline-flex items-center gap-2 cursor-pointer"
             >
               <Download size={12} />
               RESUME
@@ -54,26 +57,32 @@ function Dashboard() {
         </div>
       </Card>
 
-      <Card className="md:col-span-1 p-5 bg-[var(--neo-secondary)]">
+      <Card
+        className="md:col-span-1 p-5 bg-(--neo-secondary)"
+        onClick={() => window.open(githubProfileUrl, "_blank", "noopener,noreferrer")}
+      >
         <DeveloperMonitor />
       </Card>
 
-      <Card className="md:col-span-1 p-5 bg-[var(--neo-lime)]">
+      <Card className="md:col-span-1 p-5 bg-(--neo-lime)">
         <TechRadar />
       </Card>
 
       <Card
-        className="md:col-span-2 p-5 bg-[var(--neo-accent)]"
+        className="md:col-span-2 p-5 bg-(--neo-accent)"
         onClick={() => window.open(IDENTITY.leetCode, "_blank", "noopener,noreferrer")}
       >
         <LeetCodeWidget />
       </Card>
 
-      <Card className="md:col-span-3 p-5 bg-white">
+      <Card
+        className="md:col-span-3 p-5 bg-white"
+        onClick={() => window.open(githubProfileUrl, "_blank", "noopener,noreferrer")}
+      >
         <Matrix />
       </Card>
 
-      <Card className="md:col-span-1 p-5 bg-[var(--neo-blue)]">
+      <Card className="md:col-span-1 p-5 bg-(--neo-blue)">
         <StarredRepos />
       </Card>
     </div>
