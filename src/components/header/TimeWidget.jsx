@@ -9,10 +9,11 @@ function TimeWidget() {
   }, []);
 
   return (
-    <div className="font-mono text-xs text-neutral-500 flex items-center gap-2">
-      <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
+    <div className="brutal-chip bg-[var(--neo-orange)] text-black inline-flex items-center gap-2">
+      <span className="w-2 h-2 bg-black animate-pulse" />
       {time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
     </div>
   );
 }
+
 export default TimeWidget;

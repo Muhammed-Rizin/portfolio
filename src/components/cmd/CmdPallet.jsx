@@ -1,19 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Terminal, X } from "lucide-react";
 import { useView } from "../../context/ViewContext";
 import { SECTIONS } from "../../data/sections";
-import { Terminal, X } from "lucide-react";
 
 const CmdPalette = () => {
   const navigate = useNavigate();
-  const { cmdOpen, setCmdOpen, redMode } = useView();
+  const { cmdOpen, setCmdOpen } = useView();
+  const [query, setQuery] = useState("");
 
-  // Register global CMD+K listener HERE (safe, isolated)
+  const closePalette = () => {
+    setCmdOpen(false);
+    setQuery("");
+  };
+
   useEffect(() => {
     const down = (e) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setCmdOpen((o) => !o);
+        setCmdOpen((open) => {
+          const next = !open;
+          if (!next) setQuery("");
+          return next;
+        });
+      }
+      if (e.key === "Escape") {
+        setCmdOpen(false);
+        setQuery("");
       }
     };
 
@@ -21,48 +34,64 @@ const CmdPalette = () => {
     return () => window.removeEventListener("keydown", down);
   }, [setCmdOpen]);
 
+  const commands = useMemo(
+    () =>
+      SECTIONS.filter((cmd) =>
+        cmd.l.toLowerCase().includes(query.trim().toLowerCase())
+      ),
+    [query]
+  );
+
   if (!cmdOpen) return null;
 
   const handleNavigate = (id) => {
     navigate(`/${id === "dashboard" ? "dashboard" : id}`);
-    setCmdOpen(false);
+    closePalette();
   };
 
   return (
     <div
-      className="fixed inset-0 z-100 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={() => setCmdOpen(false)}
+      className="fixed inset-0 z-[140] bg-black/60 backdrop-blur-[1px] flex items-start justify-center px-4 pt-24"
+      onClick={closePalette}
     >
       <div
-        className={`w-full max-w-lg border bg-black shadow-2xl ${
-          redMode ? "border-red-600" : "border-neutral-800"
-        }`}
+        className="w-full max-w-xl brutal-card bg-[var(--neo-surface)]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center gap-3 border-b border-neutral-800 p-4">
-          <Terminal size={18} className="text-red-600" />
+        <div className="flex items-center gap-3 border-b-4 border-black px-4 py-3 bg-[var(--neo-secondary)]">
+          <Terminal size={17} className="text-black" />
           <input
             autoFocus
-            placeholder="EXECUTE..."
-            className="bg-transparent w-full outline-none font-mono text-white text-sm"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="TYPE A COMMAND..."
+            className="bg-transparent w-full outline-none text-black neo-mono text-sm placeholder:text-black/60"
           />
-          <button onClick={() => setCmdOpen(false)}>
-            <X size={18} className="text-neutral-500 hover:text-white" />
+          <button
+            type="button"
+            onClick={closePalette}
+            className="brutal-btn bg-white text-black p-1"
+          >
+            <X size={14} />
           </button>
         </div>
 
-        {/* Action List */}
-        <div className="p-2 grid gap-1">
-          {SECTIONS.map((cmd) => (
+        <div className="p-3 grid gap-2 max-h-[360px] overflow-y-auto">
+          {commands.map((cmd) => (
             <button
               key={cmd.id}
               onClick={() => handleNavigate(cmd.id)}
-              className="w-full flex items-center gap-3 p-3 hover:bg-neutral-900 text-neutral-400 hover:text-white transition-colors font-mono text-sm"
+              className="brutal-btn bg-[var(--neo-bg)] text-black w-full px-3 py-2 flex items-center gap-3 text-sm"
             >
-              <cmd.icon size={16} /> {cmd.l}
+              <cmd.icon size={15} />
+              <span className="neo-mono">{cmd.l}</span>
             </button>
           ))}
+          {commands.length === 0 && (
+            <div className="neo-mono text-xs text-[var(--neo-muted)] px-2 py-3">
+              NO COMMAND MATCHED.
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -4,23 +4,27 @@ import { FIRMWARE_MODULES } from "../../data/firmware";
 
 function Firmware() {
   return (
-    <div className="pb-32">
-      <h2 className="text-xl font-mono font-bold text-white border-b border-neutral-800 pb-4 mb-8">
-        FIRMWARE_MAP
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {FIRMWARE_MODULES.map((mod, i) => (
-          <Card key={i} className="p-6">
-            <h3 className="text-xs font-mono text-red-600 mb-4 border-b border-neutral-900 pb-2 flex items-center gap-2">
-              <Hash size={12} /> {mod.cat}
+    <div className="pb-44">
+      <h2 className="section-title mb-8">Firmware Map</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {FIRMWARE_MODULES.map((module, idx) => (
+          <Card
+            key={module.cat}
+            className={`p-5 ${idx % 2 === 0 ? "bg-[var(--neo-secondary)]" : "bg-[var(--neo-primary)]"}`}
+          >
+            <h3 className="section-title bg-white mb-4">
+              <Hash size={12} />
+              {module.cat}
             </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {mod.items.map((item) => (
-                <div key={item.id} className="flex justify-between items-center">
-                  <span className="text-xs font-mono text-white">{item.id}</span>
-                  <span className="text-[10px] font-mono text-neutral-500 border border-neutral-800 px-1">
-                    {item.ver}
-                  </span>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {module.items.map((item) => (
+                <div
+                  key={item.id}
+                  className="brutal-card bg-white p-3 flex items-center justify-between"
+                >
+                  <span className="neo-mono text-xs font-bold">{item.id}</span>
+                  <span className="brutal-chip bg-[var(--neo-lime)] text-black">{item.ver}</span>
                 </div>
               ))}
             </div>

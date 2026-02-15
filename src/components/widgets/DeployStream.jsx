@@ -1,37 +1,29 @@
 import { useAsync } from "../../hooks/useAsync";
 import { getRecentPushEvents } from "../../utils/github";
 import Loading from "../ui/Loading";
-import { useView } from "../../context/ViewContext";
 
 function DeployStream() {
-  const { redMode } = useView();
   const { data: commits = [], loading } = useAsync(getRecentPushEvents, []);
 
   if (loading) return <Loading />;
 
   return (
-    <>
-      <div className="flex justify-between items-center border-b border-neutral-800 pb-2 mb-3">
-        <span className="text-[10px] font-mono text-neutral-500">DEPLOY_LOG</span>
-        <span className="text-[10px] font-mono text-neutral-600">CI/CD: ACTIVE</span>
+    <div className="h-full">
+      <div className="flex justify-between items-center mb-3">
+        <span className="brutal-chip bg-white text-black">DEPLOY LOG</span>
+        <span className="brutal-chip bg-black text-white">CI ACTIVE</span>
       </div>
-      <div className="space-y-3">
-        {(commits || []).map((c, i) => (
-          <div key={i} className="flex flex-col gap-0.5 group">
-            <div className="flex justify-between items-center">
-              <span
-                className={`text-[10px] font-mono ${redMode ? "text-red-600" : "text-blue-400"}`}
-              >
-                {c.repo}
-              </span>
-              <span className="text-[8px] font-mono text-neutral-600 border border-neutral-900 px-1 rounded">
-                {c.branch}
-              </span>
+      <div className="space-y-2">
+        {(commits || []).map((commit, i) => (
+          <div key={i} className="brutal-card bg-white p-2.5">
+            <div className="flex justify-between items-center gap-2">
+              <span className="neo-mono text-[11px] font-bold truncate">{commit.repo}</span>
+              <span className="brutal-chip bg-[var(--neo-primary)] text-black">{commit.branch}</span>
             </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -2,28 +2,25 @@ import { Star } from "lucide-react";
 import { useAsync } from "../../hooks/useAsync";
 import { getUserRepos } from "../../utils/github";
 
-function StarredRepos({ redMode }) {
+function StarredRepos() {
   const { data: repos = [], loading } = useAsync(getUserRepos, []);
 
   const topRepos = loading
-    ? Array(4).fill({ name: "loading…", stars: "…" })
-    : [...repos]
+    ? Array(4).fill({ name: "loading...", stars: "..." })
+    : [...repos].sort((a, b) => b.stars - a.stars).slice(0, 4);
 
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full text-black">
       <div className="flex justify-between items-start mb-4">
-        <Star size={20} className={redMode ? "text-red-600" : "text-neutral-400"} />
-        <span className="text-[10px] font-mono text-neutral-600">TOP_REPOS</span>
+        <Star size={20} />
+        <span className="brutal-chip bg-white text-black">TOP REPOS</span>
       </div>
-      <div className="space-y-3">
-        {topRepos.slice(0, 4).map((repo, i) => (
-          <div key={i} className="flex items-center justify-between group cursor-pointer">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-white group-hover:text-red-500 transition-colors">
-                {repo.name}
-              </span>
-            </div>
-            <span className="text-[10px] font-mono text-neutral-500">{repo.stars} ★</span>
+
+      <div className="space-y-2">
+        {topRepos.map((repo, i) => (
+          <div key={i} className="brutal-card bg-white px-3 py-2 flex items-center justify-between">
+            <span className="neo-mono text-xs font-bold truncate pr-2">{repo.name}</span>
+            <span className="neo-mono text-[11px]">{`${repo.stars} *`}</span>
           </div>
         ))}
       </div>

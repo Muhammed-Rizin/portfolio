@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function BootScreen({ duration = 300 }) {
+export default function BootScreen({ duration = 260 }) {
   const [lines, setLines] = useState([]);
   const [booted, setBooted] = useState(false);
   const [hide, setHide] = useState(false);
@@ -8,31 +8,27 @@ export default function BootScreen({ duration = 300 }) {
   useEffect(() => {
     const sequence = [
       "NEXUS-OS BOOTLOADER v3.7",
-      "INITIALIZING_CORE_MODULES...",
-      "IDENTITY_CHECK... [MUHAMMED_RIZIN]",
-      "ROLE_VERIFIED... [FULL_STACK_ENGINEER]",
-      "LOADING_RUNTIME... [REACT • NODE • TYPESCRIPT • AWS]",
-      "STARTING_SERVICES... AUTH | API | CACHE | DB_CLUSTER",
-      "NETWORK_HANDSHAKE... STABLE (24ms)",
-      "SECURITY_PROTOCOLS... PASSED",
-      "SYSTEM_OPTIMIZATION... COMPLETE",
-      "ENVIRONMENT_READY.",
+      "INITIALIZING CORE MODULES...",
+      "IDENTITY CHECK... [MUHAMMED_RIZIN]",
+      "ROLE VERIFIED... [FULL_STACK_ENGINEER]",
+      "LOADING RUNTIME... [REACT | NODE | TYPESCRIPT | AWS]",
+      "STARTING SERVICES... AUTH | API | CACHE | DB_CLUSTER",
+      "NETWORK HANDSHAKE... STABLE (24ms)",
+      "SECURITY PROTOCOLS... PASSED",
+      "SYSTEM OPTIMIZATION... COMPLETE",
+      "ENVIRONMENT READY.",
     ];
 
-    let delay = 100;
+    let delay = 90;
 
     sequence.forEach((line, index) => {
       setTimeout(() => {
         setLines((prev) => [...prev, line]);
-
-        // When last line is done → trigger boot complete
         if (index === sequence.length - 1) {
           setTimeout(() => {
             setBooted(true);
-
-            // fade out animation
-            setTimeout(() => setHide(true), 600);
-          }, 800);
+            setTimeout(() => setHide(true), 550);
+          }, 650);
         }
       }, delay);
 
@@ -44,13 +40,16 @@ export default function BootScreen({ duration = 300 }) {
 
   return (
     <div
-      className={`fixed inset-0 bg-black z-[999] flex flex-col justify-end p-8 font-mono text-xs text-red-600 pointer-events-none select-none transition-opacity duration-700
-        ${booted ? "opacity-0" : "opacity-100"}`}
+      className={`fixed inset-0 z-[999] flex items-end p-4 md:p-8 transition-opacity duration-700 pointer-events-none ${
+        booted ? "opacity-0" : "opacity-100"
+      }`}
     >
-      {lines.map((l, i) => (
-        <div key={i}>&gt; {l}</div>
-      ))}
-      <div className="w-2 h-4 bg-red-600 animate-pulse mt-2" />
+      <div className="w-full max-w-3xl brutal-card bg-black text-[var(--neo-primary)] p-4 md:p-6 neo-mono text-[10px] md:text-xs">
+        {lines.map((line, i) => (
+          <div key={i} className="mb-1">{`> ${line}`}</div>
+        ))}
+        <div className="w-2 h-4 bg-[var(--neo-primary)] animate-pulse mt-2" />
+      </div>
     </div>
   );
 }

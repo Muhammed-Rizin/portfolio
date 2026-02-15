@@ -1,11 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-/* Hide scrollbar for all scrollable elements */
+:root {
+  --neo-ink: #000000;
+  --neo-bg: #fff9d4;
+  --neo-bg-2: #fffdf3;
+  --neo-surface: #ffffff;
+  --neo-text: #0f172a;
+  --neo-muted: #334155;
+  --neo-primary: #facc15;
+  --neo-secondary: #67e8f9;
+  --neo-accent: #f472b6;
+  --neo-lime: #a3e635;
+  --neo-orange: #fb923c;
+  --neo-blue: #60a5fa;
+  --neo-border: 4px solid var(--neo-ink);
+  --neo-shadow: 6px 6px 0 var(--neo-ink);
+  --neo-shadow-lg: 10px 10px 0 var(--neo-ink);
+}
+
+.red-mode {
+  --neo-bg: #121212;
+  --neo-bg-2: #1c1c1c;
+  --neo-surface: #242424;
+  --neo-text: #f8fafc;
+  --neo-muted: #cbd5e1;
+  --neo-primary: #fb7185;
+  --neo-secondary: #f97316;
+  --neo-accent: #a78bfa;
+  --neo-lime: #4ade80;
+  --neo-orange: #facc15;
+  --neo-blue: #67e8f9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
 
-* {
-  -ms-overflow-style: none; /* IE + Edge */
-  scrollbar-width: none; /* Firefox */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--neo-text);
+  background: var(--neo-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Black", "Space Grotesk", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.neo-app {
+  background:
+    radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--neo-secondary) 44%, transparent), transparent 36%),
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--neo-accent) 35%, transparent), transparent 28%),
+    linear-gradient(180deg, var(--neo-bg), var(--neo-bg-2));
+}
+
+.neo-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.section-title {
+  border: var(--neo-border);
+  box-shadow: var(--neo-shadow);
+  background: var(--neo-primary);
+  color: var(--neo-ink);
+  padding: 0.65rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-transform: uppercase;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.brutal-card {
+  border: var(--neo-border);
+  box-shadow: var(--neo-shadow);
+  background: var(--neo-surface);
+  border-radius: 0;
+  transition: transform 140ms ease, box-shadow 140ms ease, background-color 180ms ease;
+}
+
+.brutal-card-active {
+  background: var(--neo-primary);
+}
+
+.brutal-interactive {
+  cursor: pointer;
+}
+
+.brutal-interactive:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--neo-shadow-lg);
+}
+
+.brutal-interactive:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--neo-ink);
+}
+
+.brutal-btn {
+  border: var(--neo-border);
+  box-shadow: var(--neo-shadow);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 160ms ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neo-shadow-lg);
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--neo-ink);
+}
+
+.brutal-chip {
+  border: 3px solid var(--neo-ink);
+  box-shadow: 4px 4px 0 var(--neo-ink);
+  padding: 0.2rem 0.55rem;
+  text-transform: uppercase;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.scanline-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 60;
+}
+
+.scanline-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: color-mix(in srgb, var(--neo-ink) 25%, transparent);
+  animation: scanline 9s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    top: -15%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
 }

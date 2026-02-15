@@ -1,9 +1,7 @@
-import React from "react";
-
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center h-full text-[10px] font-mono text-neutral-500">
-      LOADING…
+    <div className="flex items-center justify-center h-full py-6">
+      <div className="brutal-chip bg-[var(--neo-secondary)] text-black">LOADING...</div>
     </div>
   );
 };

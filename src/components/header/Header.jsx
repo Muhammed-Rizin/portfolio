@@ -1,20 +1,46 @@
-import React from "react";
+import { ExternalLink, Search } from "lucide-react";
 import { useView } from "../../context/ViewContext";
 import TimeWidget from "./TimeWidget";
 
 const Header = () => {
-  const { setView } = useView();
+  const { setCmdOpen } = useView();
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b border-neutral-800">
-      <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-        <div
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => setView("dashboard")}
-        >
-          <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse shadow-[0_0_10px_red]" />
-          <span className="font-mono font-bold text-white tracking-tight">Rizin</span>
+    <header className="sticky top-0 z-50 px-3 md:px-6 pt-4">
+      <div className="max-w-7xl mx-auto brutal-card bg-[var(--neo-surface)] px-4 md:px-6 py-3 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-5 h-5 border-[3px] border-black bg-[var(--neo-primary)] shadow-[3px_3px_0_#000]" />
+          <div className="text-left leading-none">
+            <p className="text-lg md:text-xl uppercase text-[var(--neo-ink)]">Rizin</p>
+            <p className="neo-mono text-[9px] md:text-[10px] font-bold tracking-wider text-[var(--neo-muted)]">
+              FULL STACK PORTFOLIO
+            </p>
+          </div>
         </div>
-        <TimeWidget />
+
+        <div className="flex items-center gap-2 md:gap-3">
+          <button
+            type="button"
+            onClick={() =>
+              window.open("https://muhammedrizin.in/", "_blank", "noopener,noreferrer")
+            }
+            className="brutal-btn bg-[var(--neo-primary)] text-black px-3 py-2 text-[10px] md:text-xs inline-flex items-center gap-2 cursor-pointer"
+            aria-label="Open terminal portfolio"
+          >
+            <ExternalLink size={14} />
+            TERMINAL
+          </button>
+          <button
+            type="button"
+            onClick={() => setCmdOpen(true)}
+            className="brutal-btn bg-[var(--neo-lime)] text-black px-3 py-2 text-[10px] md:text-xs inline-flex items-center gap-2 cursor-pointer"
+            aria-label="Open command palette"
+          >
+            <Search size={14} />
+            CMD+K
+          </button>
+          <TimeWidget />
+        </div>
       </div>
     </header>
   );

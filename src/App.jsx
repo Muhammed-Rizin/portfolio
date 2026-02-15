@@ -30,8 +30,8 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen bg-black text-neutral-200 font-sans selection:bg-red-600/30 relative overflow-x-hidden ${
-        redMode ? "selection:bg-red-900/50" : ""
+      className={`neo-app min-h-screen relative overflow-x-hidden selection:bg-[var(--neo-primary)] selection:text-black ${
+        redMode ? "red-mode" : ""
       }`}
     >
       <DottedBg />
@@ -40,7 +40,7 @@ export default function App() {
       <CmdPalette />
       <Header />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-4 pt-8 min-h-screen">
+      <main className="relative z-20 max-w-7xl mx-auto px-4 md:px-6 md:pr-32 pt-8 min-h-screen">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
