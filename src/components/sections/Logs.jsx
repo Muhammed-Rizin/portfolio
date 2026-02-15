@@ -11,9 +11,7 @@ function Logs() {
           <div key={i} className="pl-8 relative">
             <div
               className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border ${
-                i === SYSTEM_LOGS.length - 1
-                  ? "bg-red-600 border-red-600 animate-pulse"
-                  : "bg-black border-neutral-600"
+                i === 0 ? "bg-red-600 border-red-600 animate-pulse" : "bg-black border-neutral-600"
               }`}
             />
             <div className="flex gap-2 mb-1">
