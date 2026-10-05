@@ -5,8 +5,52 @@
 [secrets_scan]
   enabled = false
 
+# Redirect old domain (muhammedrizin.in) to new domain (rizin.si)
 [[redirects]]
-  from = "http://muhammedrizin.in/*"
-  to = "https://muhammedrizin.in/:splat"
+  from = "https://muhammedrizin.in/*"
+  to = "https://rizin.si/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "http://muhammedrizin.in/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.muhammedrizin.in/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.muhammedrizin.in/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+# Enforce canonical HTTPS on rizin.si
+[[redirects]]
+  from = "http://rizin.si/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.rizin.si/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.rizin.si/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+# SPA client-side routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

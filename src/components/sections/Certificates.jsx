@@ -39,7 +39,7 @@ const Certificates = ({ redMode }) => {
             key={i}
             className="p-6 group cursor-pointer hover:bg-neutral-900"
             redMode={redMode}
-            onClick={() => window.open(cert.link, "_blank")}
+            onClick={() => window.open(cert.link, "_blank", "noopener,noreferrer")}
           >
             <div className="flex justify-between items-start mb-4">
               <FileText size={24} className={redMode ? "text-red-600" : "text-white"} />

@@ -132,14 +132,18 @@ Create `.env`:
 VITE_GITHUB_TOKEN=your_token
 VITE_GITHUB_USERNAME=Muhammed-Rizin
 VITE_WORK_USERNAME=rizin-srv
+VITE_SITE_URL=https://rizin.si
+VITE_NEO_THEME_URL=https://neo.rizin.si/
 ```
 
-### .env.example`
+### `.env.example`
 
 ```
-VITE_GITHUB_USERNAME=
+VITE_GITHUB_USERNAME=Muhammed-Rizin
 VITE_GITHUB_TOKEN=
-VITE_WORK_USERNAME=
+VITE_WORK_USERNAME=rizin-srv
+VITE_SITE_URL=https://rizin.si
+VITE_NEO_THEME_URL=https://neo.rizin.si/
 ```
 
 ---

@@ -28,7 +28,8 @@ function Dashboard() {
             </div>
 
             <button
-              onClick={() => window.open(IDENTITY.resume, "_blank")}
+              id="dashboard-resume-btn"
+              onClick={() => window.open(IDENTITY.resume, "_blank", "noopener,noreferrer")}
               className={`flex items-center gap-2 px-3 py-1 border transition-colors group cursor-pointer ${
                 redMode
                   ? "border-red-900 hover:bg-red-900/20"
@@ -81,8 +82,9 @@ function Dashboard() {
       </Card>
 
       <Card
+        id="dashboard-leetcode-card"
         className="md:col-span-2 p-6 cursor-pointer hover:border-white"
-        onClick={() => window.open(IDENTITY.leetCode)}
+        onClick={() => window.open(IDENTITY.leetCode, "_blank", "noopener,noreferrer")}
       >
         <LeetCodeWidget />
       </Card>

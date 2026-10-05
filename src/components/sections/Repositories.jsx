@@ -22,7 +22,7 @@ function Repositories() {
           <Card
             key={repo.name}
             className="p-6 flex flex-col justify-between group cursor-pointer hover:bg-neutral-900"
-            onClick={() => window.open(repo.url, "_blank")}
+            onClick={() => window.open(repo.url, "_blank", "noopener,noreferrer")}
           >
             <div>
               <div className="flex justify-between items-start mb-3">

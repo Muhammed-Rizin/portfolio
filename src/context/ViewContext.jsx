@@ -20,6 +20,7 @@ export function ViewProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useView() {
   return useContext(ViewContext);
 }
