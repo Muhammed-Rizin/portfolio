@@ -5,8 +5,41 @@
 [secrets_scan]
   enabled = false
 
+# Redirect old domain to new neo domain
 [[redirects]]
-  from = "http://muhammedrizin.in/*"
-  to = "https://muhammedrizin.in/:splat"
+  from = "https://neo.muhammedrizin.in/*"
+  to = "https://neo.rizin.si/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "http://neo.muhammedrizin.in/*"
+  to = "https://neo.rizin.si/:splat"
+  status = 301
+  force = true
+
+# Enforce canonical HTTPS on neo.rizin.si
+[[redirects]]
+  from = "http://neo.rizin.si/*"
+  to = "https://neo.rizin.si/:splat"
+  status = 301
+  force = true
+
+# Fallback: Redirect old apex if routed here
+[[redirects]]
+  from = "https://muhammedrizin.in/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://muhammedrizin.in/*"
+  to = "https://rizin.si/:splat"
+  status = 301
+  force = true
+
+# SPA client-side routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,6 +1,9 @@
 import { ExternalLink, Search } from "lucide-react";
 import { useView } from "../../context/ViewContext";
 
+const MAIN_PORTFOLIO_URL =
+  import.meta.env.VITE_MAIN_PORTFOLIO_URL || import.meta.env.VITE_SITE_URL || "https://rizin.si/";
+
 const Header = () => {
   const { setCmdOpen } = useView();
 
@@ -19,10 +22,9 @@ const Header = () => {
 
         <div className="flex items-center gap-2 md:gap-3">
           <button
+            id="terminal-theme-btn"
             type="button"
-            onClick={() =>
-              window.open("https://muhammedrizin.in/", "_blank", "noopener,noreferrer")
-            }
+            onClick={() => window.open(MAIN_PORTFOLIO_URL, "_blank", "noopener,noreferrer")}
             className="brutal-btn bg-[var(--neo-primary)] text-black px-3 py-2 text-[10px] md:text-xs inline-flex items-center gap-2 cursor-pointer"
             aria-label="Open terminal portfolio"
           >
@@ -30,6 +32,7 @@ const Header = () => {
             TERMINAL
           </button>
           <button
+            id="cmd-palette-btn"
             type="button"
             onClick={() => setCmdOpen(true)}
             className="brutal-btn bg-[var(--neo-lime)] text-black px-3 py-2 text-[10px] md:text-xs inline-flex items-center gap-2 cursor-pointer"
