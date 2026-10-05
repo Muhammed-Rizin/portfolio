@@ -16,8 +16,13 @@ function Firmware() {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {mod.items.map((item) => (
-                <div key={item.id} className="flex justify-between items-center">
-                  <span className="text-xs font-mono text-white">{item.id}</span>
+                <div
+                  key={item.id}
+                  className="flex justify-between items-center"
+                >
+                  <span className="text-xs font-mono text-white">
+                    {item.id}
+                  </span>
                   <span className="text-[10px] font-mono text-neutral-500 border border-neutral-800 px-1">
                     {item.ver}
                   </span>

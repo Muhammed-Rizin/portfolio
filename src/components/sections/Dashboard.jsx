@@ -9,9 +9,21 @@ import LeetCodeWidget from "../widgets/LeetCodeWidget";
 import Matrix from "../widgets/Matrix";
 import DeployStream from "../widgets/DeployStream";
 import StarredRepos from "../widgets/StarredRepos";
+import { getResumeUrl } from "../../services/supabase";
 
 function Dashboard() {
   const { redMode } = useView();
+
+  const handleGetResume = async () => {
+    try {
+      const url = await getResumeUrl();
+      if (url) {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+    } catch {
+      // no-op if no url
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-auto gap-4 pb-32">
@@ -24,12 +36,14 @@ function Dashboard() {
               }`}
             >
               <div className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse" />
-              <span className="text-[10px] font-mono text-neutral-400 tracking-widest">ONLINE</span>
+              <span className="text-[10px] font-mono text-neutral-400 tracking-widest">
+                ONLINE
+              </span>
             </div>
 
             <button
               id="dashboard-resume-btn"
-              onClick={() => window.open(IDENTITY.resume, "_blank", "noopener,noreferrer")}
+              onClick={handleGetResume}
               className={`flex items-center gap-2 px-3 py-1 border transition-colors group cursor-pointer ${
                 redMode
                   ? "border-red-900 hover:bg-red-900/20"
@@ -38,7 +52,11 @@ function Dashboard() {
             >
               <Download
                 size={12}
-                className={redMode ? "text-red-600" : "text-neutral-400 group-hover:text-white"}
+                className={
+                  redMode
+                    ? "text-red-600"
+                    : "text-neutral-400 group-hover:text-white"
+                }
               />
               <span className="text-[10px] font-mono text-neutral-500 group-hover:text-white">
                 GET_RESUME
@@ -55,10 +73,14 @@ function Dashboard() {
               </span>
             </h1>
 
-            <div className="mt-2 text-xs font-mono text-red-600">{IDENTITY.role}</div>
+            <div className="mt-2 text-xs font-mono text-red-600">
+              {IDENTITY.role}
+            </div>
           </div>
 
-          <p className="font-mono text-xs text-neutral-500 max-w-sm mt-4">{IDENTITY.bio}</p>
+          <p className="font-mono text-xs text-neutral-500 max-w-sm mt-4">
+            {IDENTITY.bio}
+          </p>
         </div>
 
         <div className="flex gap-2 flex-wrap mt-6">
@@ -77,14 +99,19 @@ function Dashboard() {
         <DeveloperMonitor />
       </Card>
 
-      <Card className="md:col-span-1 h-full p-4 flex flex-col justify-between" redMode={redMode}>
+      <Card
+        className="md:col-span-1 h-full p-4 flex flex-col justify-between"
+        redMode={redMode}
+      >
         <TechRadar />
       </Card>
 
       <Card
         id="dashboard-leetcode-card"
         className="md:col-span-2 p-6 cursor-pointer hover:border-white"
-        onClick={() => window.open(IDENTITY.leetCode, "_blank", "noopener,noreferrer")}
+        onClick={() =>
+          window.open(IDENTITY.leetCode, "_blank", "noopener,noreferrer")
+        }
       >
         <LeetCodeWidget />
       </Card>

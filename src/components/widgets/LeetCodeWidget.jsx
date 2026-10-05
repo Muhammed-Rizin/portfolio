@@ -11,7 +11,7 @@ function LeetCodeWidget() {
 
   if (loading) return <Loading />;
 
-  const { total, easy, medium, hard, rank } = stats;
+  const { total = 0, easy = 0, medium = 0, hard = 0, rank = 0 } = stats || {};
 
   const easyPct = total > 0 ? (easy / total) * 100 : 0;
   const mediumPct = total > 0 ? (medium / total) * 100 : 0;
@@ -21,8 +21,13 @@ function LeetCodeWidget() {
     <div className="flex flex-col justify-between h-full w-full">
       <div className="flex justify-between items-start mb-2">
         <div className="flex items-center gap-2">
-          <Code size={20} className={redMode ? "text-red-600" : "text-neutral-400"} />
-          <span className="text-[10px] font-mono text-neutral-600">LEETCODE</span>
+          <Code
+            size={20}
+            className={redMode ? "text-red-600" : "text-neutral-400"}
+          />
+          <span className="text-[10px] font-mono text-neutral-600">
+            LEETCODE
+          </span>
         </div>
 
         <div className="flex flex-col items-end">
@@ -37,7 +42,9 @@ function LeetCodeWidget() {
 
       <div>
         <div className="text-2xl font-bold text-white font-mono">{total}</div>
-        <div className="text-[10px] text-neutral-500 font-mono mb-2">PROBLEMS_SOLVED</div>
+        <div className="text-[10px] text-neutral-500 font-mono mb-2">
+          PROBLEMS_SOLVED
+        </div>
 
         {/* Difficulty Bar */}
         <div className="flex gap-1 h-1.5 overflow-hidden rounded-full w-full">

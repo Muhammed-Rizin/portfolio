@@ -8,7 +8,6 @@ export const WORK_USERNAME = import.meta.env.VITE_WORK_USERNAME;
 export const GITHUB_USERNAME = import.meta.env.VITE_GITHUB_USERNAME;
 export const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
-
 const GITHUB_API = "https://api.github.com";
 const GRAPHQL_API = `${GITHUB_API}/graphql`;
 
@@ -58,11 +57,15 @@ export async function getContributionMatrix() {
       body: JSON.stringify({ query }),
     });
 
-    const cal = res?.data?.user?.contributionsCollection?.contributionCalendar || {};
+    const cal =
+      res?.data?.user?.contributionsCollection?.contributionCalendar || {};
 
     return {
       total: cal.totalContributions || 0,
-      weeks: cal.weeks?.map((week) => week.contributionDays.map((d) => d.contributionCount)) || [],
+      weeks:
+        cal.weeks?.map((week) =>
+          week.contributionDays.map((d) => d.contributionCount),
+        ) || [],
     };
   });
 }
@@ -73,7 +76,7 @@ export async function getContributionMatrix() {
 export async function getUserRepos() {
   return cache(`repos:${GITHUB_USERNAME}`, async () => {
     const repos = await githubFetch(
-      `${GITHUB_API}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`
+      `${GITHUB_API}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`,
     );
 
     if (!Array.isArray(repos)) return [];
@@ -90,12 +93,47 @@ export async function getUserRepos() {
   });
 }
 
+export async function getTopStarredRepos(limit = 4) {
+  return cache(
+    `repos:starred:${GITHUB_USERNAME}`,
+    async () => {
+      try {
+        const data = await githubFetch(
+          `${GITHUB_API}/search/repositories?q=user:${GITHUB_USERNAME}&sort=stars&order=desc&per_page=10`,
+        );
+
+        if (Array.isArray(data?.items)) {
+          return data.items.slice(0, limit).map((repo) => ({
+            name: repo.name,
+            desc: repo.description || "No description provided.",
+            lang: repo.language || "Unknown",
+            stars: repo.stargazers_count ?? 0,
+            forks: repo.forks_count ?? repo.forks ?? 0,
+            url: repo.html_url,
+            pushedAt: new Date(repo.pushed_at).getTime(),
+          }));
+        }
+      } catch {
+        // failover
+      }
+
+      const allRepos = await getUserRepos();
+      return [...allRepos]
+        .sort((a, b) => (b.stars || 0) - (a.stars || 0))
+        .slice(0, limit);
+    },
+    15 * 60 * 1000,
+  );
+}
+
 // ---------------------------------------------------
 // 3. Fetch Push Events
 // ---------------------------------------------------
 export async function getRecentPushEvents() {
   return cache(`push:${GITHUB_USERNAME}`, async () => {
-    const events = await githubFetch(`${GITHUB_API}/users/${GITHUB_USERNAME}/events`);
+    const events = await githubFetch(
+      `${GITHUB_API}/users/${GITHUB_USERNAME}/events`,
+    );
 
     if (!Array.isArray(events)) return [];
 
@@ -178,7 +216,9 @@ export async function getUserProfile() {
 // ---------------------------------------------------
 export async function getDeveloperStats() {
   return cache(`devstats:${GITHUB_USERNAME}`, async () => {
-    const events = await githubFetch(`${GITHUB_API}/users/${GITHUB_USERNAME}/events`);
+    const events = await githubFetch(
+      `${GITHUB_API}/users/${GITHUB_USERNAME}/events`,
+    );
 
     if (!Array.isArray(events))
       return {

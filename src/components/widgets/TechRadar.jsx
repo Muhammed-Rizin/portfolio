@@ -15,8 +15,13 @@ function TechRadar() {
   return (
     <>
       <div className="flex justify-between items-center border-b border-neutral-800 pb-2 mb-2">
-        <span className="text-[10px] font-mono text-neutral-500">TECH_RADAR</span>
-        <Cpu size={14} className={redMode ? "text-red-600" : "text-neutral-500"} />
+        <span className="text-[10px] font-mono text-neutral-500">
+          TECH_RADAR
+        </span>
+        <Cpu
+          size={14}
+          className={redMode ? "text-red-600" : "text-neutral-500"}
+        />
       </div>
 
       <div className="space-y-2">

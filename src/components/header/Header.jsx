@@ -3,7 +3,8 @@ import { Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import TimeWidget from "./TimeWidget";
 
-const NEO_THEME_URL = import.meta.env.VITE_NEO_THEME_URL || "https://neo.rizin.si/";
+const NEO_THEME_URL =
+  import.meta.env.VITE_NEO_THEME_URL || "https://neo.rizin.si/";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,13 +18,17 @@ const Header = () => {
           onClick={() => navigate("/dashboard")}
         >
           <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse shadow-[0_0_10px_red]" />
-          <span className="font-mono font-bold text-white tracking-tight">Rizin</span>
+          <span className="font-mono font-bold text-white tracking-tight">
+            Rizin
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <button
             id="neo-theme-btn"
             type="button"
-            onClick={() => window.open(NEO_THEME_URL, "_blank", "noopener,noreferrer")}
+            onClick={() =>
+              window.open(NEO_THEME_URL, "_blank", "noopener,noreferrer")
+            }
             className="px-3 py-2 text-[10px] font-mono font-bold uppercase text-white bg-neutral-900 border border-neutral-700 hover:bg-neutral-800 transition-colors flex items-center gap-2 cursor-pointer"
             aria-label="Open neo theme portfolio"
           >

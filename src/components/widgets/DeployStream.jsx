@@ -12,8 +12,12 @@ function DeployStream() {
   return (
     <>
       <div className="flex justify-between items-center border-b border-neutral-800 pb-2 mb-3">
-        <span className="text-[10px] font-mono text-neutral-500">DEPLOY_LOG</span>
-        <span className="text-[10px] font-mono text-neutral-600">CI/CD: ACTIVE</span>
+        <span className="text-[10px] font-mono text-neutral-500">
+          DEPLOY_LOG
+        </span>
+        <span className="text-[10px] font-mono text-neutral-600">
+          CI/CD: ACTIVE
+        </span>
       </div>
       <div className="space-y-3">
         {(commits || []).map((c, i) => (

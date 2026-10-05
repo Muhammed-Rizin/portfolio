@@ -13,6 +13,6 @@ export const IDENTITY = {
     "UX_AWARE_ENGINEERING",
   ],
   bio: "Full-stack engineer with 2+ years of experience building and leading production-grade web platforms. Specialized in React, Node.js, and AWS with real-world systems used at government scale. Open to remote and international opportunities.",
-  resume: "/rizin_resume.pdf",
+  resume: import.meta.env.VITE_RESUME_URL || "",
   leetCode: "https://leetcode.com/u/muhammed-rizin/",
 };

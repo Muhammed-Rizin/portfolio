@@ -22,11 +22,16 @@ function Repositories() {
           <Card
             key={repo.name}
             className="p-6 flex flex-col justify-between group cursor-pointer hover:bg-neutral-900"
-            onClick={() => window.open(repo.url, "_blank", "noopener,noreferrer")}
+            onClick={() =>
+              window.open(repo.url, "_blank", "noopener,noreferrer")
+            }
           >
             <div>
               <div className="flex justify-between items-start mb-3">
-                <Github size={20} className={redMode ? "text-red-600" : "text-white"} />
+                <Github
+                  size={20}
+                  className={redMode ? "text-red-600" : "text-white"}
+                />
                 <span className="text-[10px] font-mono border border-neutral-800 px-2 text-neutral-500">
                   {repo.lang}
                 </span>

@@ -8,8 +8,10 @@ const ScrambleText = ({ text }) => {
       setDisp(() =>
         text
           .split("")
-          .map((c, idx) => (idx < i ? text[idx] : "X7#9"[Math.floor(Math.random() * 4)]))
-          .join("")
+          .map((c, idx) =>
+            idx < i ? text[idx] : "X7#9"[Math.floor(Math.random() * 4)],
+          )
+          .join(""),
       );
       if (i >= text.length) clearInterval(t);
       i += 1 / 3;
@@ -22,4 +24,4 @@ const ScrambleText = ({ text }) => {
   );
 };
 
-export default ScrambleText
+export default ScrambleText;

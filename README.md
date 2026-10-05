@@ -1,30 +1,27 @@
-
-
-
 # **NOTHING (R) OS — Developer Portfolio**
 
-A futuristic **operating-system style developer portfolio**, inspired by *Nothing OS*.
+A futuristic **operating-system style developer portfolio**, inspired by _Nothing OS_.
 Features animated system widgets, real-time GitHub metrics, a full boot sequence, command palette, and a minimal black-and-red interface.
 
 ---
 
 ### **Nothing-OS Inspired UI**
 
-* CRT scanlines
-* Dotted-grid background
-* Animated boot screen
-* System LEDs
-* Minimal black/red aesthetic
-* Zero-chrome cards
+- CRT scanlines
+- Dotted-grid background
+- Animated boot screen
+- System LEDs
+- Minimal black/red aesthetic
+- Zero-chrome cards
 
 ### **Real-Time Widgets**
 
-* Developer Monitor (commits, PRs, hours)
-* Tech Radar with animated skill bars
-* Deploy Pipeline Log
-* Commit Stream
-* LeetCode Stats
-* Starred repos & GitHub activity
+- Developer Monitor (commits, PRs, hours)
+- Tech Radar with animated skill bars
+- Deploy Pipeline Log
+- Commit Stream
+- LeetCode Stats
+- Starred repos & GitHub activity
 
 ### **Hidden Engineer Mode (Konami Code)**
 
@@ -34,17 +31,17 @@ Features animated system widgets, real-time GitHub metrics, a full boot sequence
 
 Enables:
 
-* RedMode theme
-* Pulsing LEDs
-* Enhanced animation states
+- RedMode theme
+- Pulsing LEDs
+- Enhanced animation states
 
 ### **Command Palette (CMD/CTRL + K)**
 
 Quick navigation:
 
-* Open sections
-* Toggle modes
-* Trigger system actions
+- Open sections
+- Toggle modes
+- Trigger system actions
 
 ### **Resume Trigger**
 
@@ -54,12 +51,12 @@ Simulated “GET_RESUME” action with command-style feedback.
 
 ## Tech Stack
 
-* React 18
-* Vite
-* TailwindCSS
-* Lucide React Icons
-* Custom Hooks
-* GitHub + LeetCode integrations
+- React 18
+- Vite
+- TailwindCSS
+- Lucide React Icons
+- Custom Hooks
+- GitHub + LeetCode integrations
 
 ---
 
@@ -134,6 +131,9 @@ VITE_GITHUB_USERNAME=Muhammed-Rizin
 VITE_WORK_USERNAME=rizin-srv
 VITE_SITE_URL=https://rizin.si
 VITE_NEO_THEME_URL=https://neo.rizin.si/
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_RESUME_URL=https://drive.google.com/file/d/your-id/view?usp=sharing
 ```
 
 ### `.env.example`
@@ -144,6 +144,9 @@ VITE_GITHUB_TOKEN=
 VITE_WORK_USERNAME=rizin-srv
 VITE_SITE_URL=https://rizin.si
 VITE_NEO_THEME_URL=https://neo.rizin.si/
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+VITE_RESUME_URL=
 ```
 
 ---
@@ -159,11 +162,11 @@ VITE_NEO_THEME_URL=https://neo.rizin.si/
 
 ## Design Principles
 
-* Minimal UI, maximum functionality
-* No external animation libraries
-* Lightweight state management
-* Modular, reusable widgets
-* Built for real developer portfolios
+- Minimal UI, maximum functionality
+- No external animation libraries
+- Lightweight state management
+- Modular, reusable widgets
+- Built for real developer portfolios
 
 ---
 
@@ -171,8 +174,16 @@ VITE_NEO_THEME_URL=https://neo.rizin.si/
 
 ```jsx
 const konami = [
-  "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
-  "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
 ];
 ```
 
@@ -197,11 +208,11 @@ npm run dev
 
 ## Ideal Use Cases
 
-* Developer portfolio
-* Personal dashboard
-* GitHub activity visualizer
-* Nothing OS–styled landing page
-* Hackathon / demo projects
+- Developer portfolio
+- Personal dashboard
+- GitHub activity visualizer
+- Nothing OS–styled landing page
+- Hackathon / demo projects
 
 ---
 

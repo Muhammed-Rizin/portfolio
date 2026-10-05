@@ -13,8 +13,13 @@ function DeveloperMonitor() {
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex justify-between items-start">
-        <Activity size={20} className={redMode ? "text-red-600" : "text-neutral-400"} />
-        <span className="text-[10px] font-mono text-neutral-600">DEV_ACTIVITY_30D</span>
+        <Activity
+          size={20}
+          className={redMode ? "text-red-600" : "text-neutral-400"}
+        />
+        <span className="text-[10px] font-mono text-neutral-600">
+          DEV_ACTIVITY_30D
+        </span>
       </div>
 
       <div className="space-y-2 font-mono text-xs mt-2">
@@ -30,7 +35,9 @@ function DeveloperMonitor() {
 
         <div className="flex justify-between text-neutral-400">
           <span>EVENTS</span>
-          <span className={redMode ? "text-red-600" : "text-white"}>{stats.eventCount}</span>
+          <span className={redMode ? "text-red-600" : "text-white"}>
+            {stats.eventCount}
+          </span>
         </div>
       </div>
     </div>

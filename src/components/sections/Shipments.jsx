@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useView } from "../../context/ViewContext";
-import { PROJECTS } from "../../data/projects";
+import { useAsync } from "../../hooks/useAsync";
+import { getShipments } from "../../services/supabase";
 
 import ProjectModal from "../modals/ProjectModal";
 import Card from "../ui/Card";
+import Loading from "../ui/Loading";
 
 function Shipments() {
   const { redMode } = useView();
   const [modalData, setModalData] = useState(null);
+  const { data: shipments = [], loading } = useAsync(getShipments, []);
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -18,7 +23,7 @@ function Shipments() {
         </h2>
 
         <div className="grid gap-4">
-          {PROJECTS.map((p) => (
+          {(shipments || []).map((p) => (
             <Card
               key={p.id}
               onClick={() => setModalData(p)}
@@ -28,7 +33,9 @@ function Shipments() {
               <div className="flex flex-col md:flex-row justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className={`font-mono text-xs text-red-600 shrink-0`}>ID_{p.id}</span>
+                    <span className="font-mono text-xs text-red-600 shrink-0">
+                      ID_{p.project_id || p.id}
+                    </span>
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tighter group-hover:underline wrap-break-word">
                       {p.name}
                     </h3>
@@ -51,7 +58,11 @@ function Shipments() {
           ))}
         </div>
       </div>
-      <ProjectModal project={modalData} onClose={() => setModalData(null)} redMode={redMode} />
+      <ProjectModal
+        project={modalData}
+        onClose={() => setModalData(null)}
+        redMode={redMode}
+      />
     </>
   );
 }

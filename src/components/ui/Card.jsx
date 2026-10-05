@@ -22,7 +22,11 @@ function Card({ children, className = "", onClick, active }) {
         <div
           key={i}
           className={`absolute w-2 h-2 transition-colors ${pos} ${
-            active ? (redMode ? "border-red-600" : "border-white") : "border-neutral-500"
+            active
+              ? redMode
+                ? "border-red-600"
+                : "border-white"
+              : "border-neutral-500"
           } opacity-0 group-hover:opacity-100`}
         />
       ))}
