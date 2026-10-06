@@ -22,10 +22,15 @@ function Logs() {
                   : "bg-black border-neutral-600"
               }`}
             />
-            <div className="flex gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-1 flex-wrap">
               <span className="text-[10px] font-mono text-red-600 border border-neutral-900 px-2 bg-neutral-950">
                 {log.date}
               </span>
+              {log.code && (
+                <span className="text-[10px] font-mono text-neutral-500 border border-neutral-900 px-2 bg-neutral-950">
+                  {log.code}
+                </span>
+              )}
               <span className="text-sm font-bold font-mono text-white">
                 {log.event}
               </span>

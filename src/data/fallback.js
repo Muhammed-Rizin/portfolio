@@ -1,5 +1,25 @@
 export const FALLBACK_SHIPMENTS = [
   {
+    id: "07",
+    project_id: "07",
+    name: "KIAL_CARGO_MANAGEMENT_SYSTEM",
+    category: "ENTERPRISE",
+    summary:
+      "End-to-end paperless cargo management platform for Kannur International Airport, covering agent onboarding, booking, airline approval, cargo operations, and finance.",
+    role: "Full Stack Developer & Project Lead",
+    impact: [
+      "Handled import, export, inbound, and outbound cargo for airlines like Air India and IndiGo",
+      "Delivered 5 role-based portals across web and mobile",
+    ],
+    contributions: [
+      "Built agent mobile app and portals for booking and wallet management",
+      "Implemented AWB and invoice handling with airline approval workflow",
+      "Automated commodity and airline-based charge calculation with PDA wallet deduction",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    live: "https://cargo.kannurairport.aero",
+  },
+  {
     id: "01",
     project_id: "01",
     name: "KSEB_PM_E_DRIVE",

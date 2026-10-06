@@ -25,10 +25,15 @@ const Certificates = ({ redMode }) => {
             }
           >
             <div className="flex justify-between items-start mb-4">
-              <FileText
-                size={24}
-                className={redMode ? "text-red-600" : "text-white"}
-              />
+              <div className="flex items-center gap-2">
+                <FileText
+                  size={24}
+                  className={redMode ? "text-red-600" : "text-white"}
+                />
+                <span className="text-[10px] font-mono text-red-600">
+                  ID_{cert.certificate_id || cert.id}
+                </span>
+              </div>
               <span className="text-[10px] font-mono border border-neutral-800 px-2 py-0.5 text-neutral-500">
                 {cert.date}
               </span>
