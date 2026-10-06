@@ -2,14 +2,14 @@ import { GitFork, Github, Star } from "lucide-react";
 import { getUserRepos } from "../../utils/github";
 import Card from "../ui/Card";
 import { useView } from "../../context/ViewContext";
-import Loading from "../ui/Loading";
+import { RepositoriesSkeleton } from "../ui/Skeleton";
 import { useAsync } from "../../hooks/useAsync";
 
 function Repositories() {
   const { redMode } = useView();
   const { data: repos = [], loading } = useAsync(getUserRepos, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <RepositoriesSkeleton />;
 
   return (
     <div className="pb-32">

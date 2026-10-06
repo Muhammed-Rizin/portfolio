@@ -6,14 +6,14 @@ import { getShipments } from "../../services/supabase";
 
 import ProjectModal from "../modals/ProjectModal";
 import Card from "../ui/Card";
-import Loading from "../ui/Loading";
+import { ShipmentsSkeleton } from "../ui/Skeleton";
 
 function Shipments() {
   const { redMode } = useView();
   const [modalData, setModalData] = useState(null);
   const { data: shipments = [], loading } = useAsync(getShipments, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <ShipmentsSkeleton />;
 
   return (
     <>
@@ -58,11 +58,7 @@ function Shipments() {
           ))}
         </div>
       </div>
-      <ProjectModal
-        project={modalData}
-        onClose={() => setModalData(null)}
-        redMode={redMode}
-      />
+      <ProjectModal project={modalData} onClose={() => setModalData(null)} redMode={redMode} />
     </>
   );
 }

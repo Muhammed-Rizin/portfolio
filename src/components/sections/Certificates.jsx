@@ -1,13 +1,13 @@
 import { FileText } from "lucide-react";
 import Card from "../ui/Card";
-import Loading from "../ui/Loading";
+import { CertificatesSkeleton } from "../ui/Skeleton";
 import { useAsync } from "../../hooks/useAsync";
 import { getCertificates } from "../../services/supabase";
 
 const Certificates = ({ redMode }) => {
   const { data: certificates = [], loading } = useAsync(getCertificates, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <CertificatesSkeleton />;
 
   return (
     <div className="pb-32">
@@ -20,16 +20,11 @@ const Certificates = ({ redMode }) => {
             key={cert.id || i}
             className="p-6 group cursor-pointer hover:bg-neutral-900"
             redMode={redMode}
-            onClick={() =>
-              window.open(cert.link, "_blank", "noopener,noreferrer")
-            }
+            onClick={() => window.open(cert.link, "_blank", "noopener,noreferrer")}
           >
             <div className="flex justify-between items-start mb-4">
               <div className="flex items-center gap-2">
-                <FileText
-                  size={24}
-                  className={redMode ? "text-red-600" : "text-white"}
-                />
+                <FileText size={24} className={redMode ? "text-red-600" : "text-white"} />
                 <span className="text-[10px] font-mono text-red-600">
                   ID_{cert.certificate_id || cert.id}
                 </span>
@@ -41,9 +36,7 @@ const Certificates = ({ redMode }) => {
             <h3 className="text-lg font-bold font-mono text-white mb-1 group-hover:underline">
               {cert.title}
             </h3>
-            <div className="text-xs font-mono text-neutral-500 mb-4">
-              {cert.issuer}
-            </div>
+            <div className="text-xs font-mono text-neutral-500 mb-4">{cert.issuer}</div>
             <div className="flex gap-2 flex-wrap">
               {(cert.skills || []).map((s) => (
                 <span

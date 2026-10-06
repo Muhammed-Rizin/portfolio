@@ -44,7 +44,7 @@ export default function BootScreen({ duration = 300 }) {
 
   return (
     <div
-      className={`fixed inset-0 bg-black z-[999] flex flex-col justify-end p-8 font-mono text-xs text-red-600 pointer-events-none select-none transition-opacity duration-700
+      className={`fixed inset-0 bg-black z-9999 flex flex-col justify-end p-8 font-mono text-xs text-red-600 pointer-events-none select-none transition-opacity duration-700
         ${booted ? "opacity-0" : "opacity-100"}`}
     >
       {lines.map((l, i) => (

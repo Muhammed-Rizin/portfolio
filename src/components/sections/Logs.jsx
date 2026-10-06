@@ -1,11 +1,11 @@
 import { useAsync } from "../../hooks/useAsync";
 import { getSystemLogs } from "../../services/supabase";
-import Loading from "../ui/Loading";
+import { LogsSkeleton } from "../ui/Skeleton";
 
 function Logs() {
   const { data: logs = [], loading } = useAsync(getSystemLogs, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <LogsSkeleton />;
 
   return (
     <div className="pb-32">
@@ -17,23 +17,14 @@ function Logs() {
           <div key={i} className="pl-8 relative">
             <div
               className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border ${
-                i === 0
-                  ? "bg-red-600 border-red-600 animate-pulse"
-                  : "bg-black border-neutral-600"
+                i === 0 ? "bg-red-600 border-red-600 animate-pulse" : "bg-black border-neutral-600"
               }`}
             />
-            <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <div className="flex gap-2 mb-1">
               <span className="text-[10px] font-mono text-red-600 border border-neutral-900 px-2 bg-neutral-950">
                 {log.date}
               </span>
-              {log.code && (
-                <span className="text-[10px] font-mono text-neutral-500 border border-neutral-900 px-2 bg-neutral-950">
-                  {log.code}
-                </span>
-              )}
-              <span className="text-sm font-bold font-mono text-white">
-                {log.event}
-              </span>
+              <span className="text-sm font-bold font-mono text-white">{log.event}</span>
             </div>
             <p className="text-xs font-mono text-neutral-500">{log.detail}</p>
           </div>
