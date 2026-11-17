@@ -9,19 +9,15 @@ import LeetCodeWidget from "../widgets/LeetCodeWidget";
 import Matrix from "../widgets/Matrix";
 import DeployStream from "../widgets/DeployStream";
 import StarredRepos from "../widgets/StarredRepos";
-import { getResumeUrl } from "../../services/supabase";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 function Dashboard() {
   const { redMode } = useView();
+  const { resumeUrl } = usePortfolioData();
 
-  const handleGetResume = async () => {
-    try {
-      const url = await getResumeUrl();
-      if (url) {
-        window.open(url, "_blank", "noopener,noreferrer");
-      }
-    } catch {
-      // no-op if no url
+  const handleGetResume = () => {
+    if (resumeUrl) {
+      window.open(resumeUrl, "_blank", "noopener,noreferrer");
     }
   };
 

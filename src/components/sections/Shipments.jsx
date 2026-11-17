@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useView } from "../../context/ViewContext";
-import { useAsync } from "../../hooks/useAsync";
-import { getShipments } from "../../services/supabase";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 import ProjectModal from "../modals/ProjectModal";
 import Card from "../ui/Card";
@@ -11,9 +10,11 @@ import { ShipmentsSkeleton } from "../ui/Skeleton";
 function Shipments() {
   const { redMode } = useView();
   const [modalData, setModalData] = useState(null);
-  const { data: shipments = [], loading } = useAsync(getShipments, []);
+  const { shipments = [], loading } = usePortfolioData();
 
-  if (loading) return <ShipmentsSkeleton />;
+  if (loading && (!shipments || shipments.length === 0)) {
+    return <ShipmentsSkeleton />;
+  }
 
   return (
     <>

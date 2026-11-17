@@ -99,3 +99,22 @@ export async function getResumeUrl() {
     15 * 60 * 1000,
   );
 }
+
+/**
+ * Parallel prefetch of all Supabase datasets
+ */
+export async function prefetchSupabaseData() {
+  const [shipmentsRes, logsRes, certsRes, resumeRes] = await Promise.allSettled([
+    getShipments(),
+    getSystemLogs(),
+    getCertificates(),
+    getResumeUrl(),
+  ]);
+
+  return {
+    shipments: shipmentsRes.status === "fulfilled" ? shipmentsRes.value : FALLBACK_SHIPMENTS,
+    logs: logsRes.status === "fulfilled" ? logsRes.value : FALLBACK_LOGS,
+    certificates: certsRes.status === "fulfilled" ? certsRes.value : FALLBACK_CERTIFICATES,
+    resumeUrl: resumeRes.status === "fulfilled" ? resumeRes.value : FALLBACK_RESUME_URL,
+  };
+}

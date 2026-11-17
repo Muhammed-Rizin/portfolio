@@ -1,11 +1,12 @@
-import { useAsync } from "../../hooks/useAsync";
-import { getSystemLogs } from "../../services/supabase";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 import { LogsSkeleton } from "../ui/Skeleton";
 
 function Logs() {
-  const { data: logs = [], loading } = useAsync(getSystemLogs, []);
+  const { logs = [], loading } = usePortfolioData();
 
-  if (loading) return <LogsSkeleton />;
+  if (loading && (!logs || logs.length === 0)) {
+    return <LogsSkeleton />;
+  }
 
   return (
     <div className="pb-32">
@@ -14,7 +15,7 @@ function Logs() {
       </h2>
       <div className="relative border-l border-neutral-800 ml-3 space-y-8">
         {(logs || []).map((log, i) => (
-          <div key={i} className="pl-8 relative">
+          <div key={log.id || i} className="pl-8 relative">
             <div
               className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border ${
                 i === 0 ? "bg-red-600 border-red-600 animate-pulse" : "bg-black border-neutral-600"

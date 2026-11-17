@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import useKonami from "./hooks/useKonami";
 import { useView } from "./context/ViewContext";
+import { PortfolioDataProvider } from "./context/PortfolioDataContext";
 
 import ScanLine from "./components/ui/Scanline";
 import DottedBg from "./components/ui/DottedBg";
@@ -29,30 +30,32 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <div
-      className={`min-h-screen bg-black text-neutral-200 font-sans selection:bg-red-600/30 relative overflow-x-hidden ${
-        redMode ? "selection:bg-red-900/50" : ""
-      }`}
-    >
-      <DottedBg />
-      <ScanLine />
-      <BootScreen />
-      <CmdPalette />
-      <Header />
+    <PortfolioDataProvider>
+      <div
+        className={`min-h-screen bg-black text-neutral-200 font-sans selection:bg-red-600/30 relative overflow-x-hidden ${
+          redMode ? "selection:bg-red-900/50" : ""
+        }`}
+      >
+        <DottedBg />
+        <ScanLine />
+        <BootScreen />
+        <CmdPalette />
+        <Header />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-4 pt-8 min-h-screen">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/projects" element={<Shipments />} />
-          <Route path="/repos" element={<Repositories />} />
-          <Route path="/firmware" element={<Firmware />} />
-          <Route path="/logs" element={<Logs />} />
-          <Route path="/certificates" element={<Certificates />} />
-        </Routes>
-      </main>
+        <main className="relative z-10 max-w-7xl mx-auto px-4 pt-8 min-h-screen">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/projects" element={<Shipments />} />
+            <Route path="/repos" element={<Repositories />} />
+            <Route path="/firmware" element={<Firmware />} />
+            <Route path="/logs" element={<Logs />} />
+            <Route path="/certificates" element={<Certificates />} />
+          </Routes>
+        </main>
 
-      <BottomNav />
-    </div>
+        <BottomNav />
+      </div>
+    </PortfolioDataProvider>
   );
 }

@@ -1,15 +1,21 @@
 import { GitFork, Github, Star } from "lucide-react";
-import { getUserRepos } from "../../utils/github";
 import Card from "../ui/Card";
 import { useView } from "../../context/ViewContext";
 import { RepositoriesSkeleton } from "../ui/Skeleton";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 import { useAsync } from "../../hooks/useAsync";
+import { getUserRepos } from "../../utils/github";
 
 function Repositories() {
   const { redMode } = useView();
-  const { data: repos = [], loading } = useAsync(getUserRepos, []);
+  const { repos: contextRepos = [] } = usePortfolioData();
+  const { data: asyncRepos = [], loading } = useAsync(getUserRepos, [], {
+    immediate: contextRepos.length === 0,
+  });
 
-  if (loading) return <RepositoriesSkeleton />;
+  const repos = contextRepos.length > 0 ? contextRepos : asyncRepos;
+
+  if (loading && repos.length === 0) return <RepositoriesSkeleton />;
 
   return (
     <div className="pb-32">
@@ -22,16 +28,11 @@ function Repositories() {
           <Card
             key={repo.name}
             className="p-6 flex flex-col justify-between group cursor-pointer hover:bg-neutral-900"
-            onClick={() =>
-              window.open(repo.url, "_blank", "noopener,noreferrer")
-            }
+            onClick={() => window.open(repo.url, "_blank", "noopener,noreferrer")}
           >
             <div>
               <div className="flex justify-between items-start mb-3">
-                <Github
-                  size={20}
-                  className={redMode ? "text-red-600" : "text-white"}
-                />
+                <Github size={20} className={redMode ? "text-red-600" : "text-white"} />
                 <span className="text-[10px] font-mono border border-neutral-800 px-2 text-neutral-500">
                   {repo.lang}
                 </span>
